@@ -6,14 +6,13 @@ import Posts from "../pages/Posts";
 import Recipes from "../pages/Recipes";
 
 export const privateRoutes = [
-    {path: '/about', component: <About/> },
     {path: '/posts', component: <Posts/> },
     {path: '/posts/:id', component: <PostIdPage/> },
     {path: '/fridge', component: <Fridge/> },
     {path: '/recipes', component: <Recipes/> },
-
 ]
 
 export const publicRoutes = [
-    {path: '/', component: <Login/> },
+    //{path: '/', component: <Login/> },
+    {path: '/about', component: <About/> },
 ]

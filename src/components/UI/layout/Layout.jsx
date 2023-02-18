@@ -1,6 +1,7 @@
-import { useContext } from "react";
-import { NavLink, Outlet } from "react-router-dom";
-import { AuthContext } from "../../../context";
+//import { useContext } from "react";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+//import { AuthContext } from "../../../context";
+import { useAuth } from "../../../hooks/useAuth";
 import MyButton from "../button/MyButton";
 
 const setActive = ({isActive}) => isActive ? 'active-link' : '';
@@ -8,11 +9,16 @@ const setColor = ({isActive}) => ({color: isActive ? 'var(--color-active)' : 'wh
 
 export const Layout = () => {
 
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    //const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {signOut} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
 
     const logout = () => {
-        setIsAuth(false);
-        localStorage.removeItem('auth')
+        //setIsAuth(false);
+        //localStorage.removeItem('auth')
+        signOut(() => navigate('/login', {state:{from:location, replace: true}}))
     }
 
     return (

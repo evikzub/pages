@@ -29,7 +29,7 @@ export const Layout = () => {
             <NavLink to={"/posts"} style={setColor} >Posts</NavLink>
             <NavLink to={"/fridge"}>Fridge</NavLink>
             <NavLink to={"/recipes"}>Recipes</NavLink>
-            <NavLink to={"/about"}>About</NavLink>
+            <NavLink to={"/about"} style={setColor} >About</NavLink>
         </header>
 
         <main className="container">

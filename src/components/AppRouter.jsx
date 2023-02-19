@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {
     Routes,
     Route,
+    Navigate,
   } from "react-router-dom";
 
 import { Notfound } from '../pages/Notfound';
@@ -25,7 +26,7 @@ const AppRouter = () => {
             {/* {(user)
             ? */}
             <Routes>
-                <Route path="login"  element={<Login/>}/>
+                <Route path="/login"  element={<Login/>}/>
                 <Route path="/" element={<Layout/>} errorElement={<ErrorPage/>}>
                     <Route index element={<HomePage/>}/>
                     {privateRoutes.map(route => 
@@ -50,6 +51,7 @@ const AppRouter = () => {
                     {publicRoutes.map(route => 
                         <Route path={route.path} element={route.component} key={route.path} />
                     )}
+                    <Route path="about-us" element={<Navigate to="/about" replace />}/>
                     <Route path="*" element={<Notfound/>} errorElement={<ErrorPage/>}/>
                 </Route>
             </Routes>

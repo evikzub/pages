@@ -8,7 +8,8 @@ import Recipes from "../pages/Recipes";
 export const privateRoutes = [
     {path: 'posts', component: <Posts/> },
     {path: 'posts/:id', component: <PostIdPage/> },
-    {path: 'fridge', component: <Fridge/> },
+    {path: 'storage', component: <Fridge/> },
+    {path: 'storage/:type', component: <Fridge/> },
     {path: 'recipes', component: <Recipes/> },
 ]
 

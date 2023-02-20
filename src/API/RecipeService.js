@@ -1,11 +1,11 @@
-import FridgeService from "./FridgeService";
+import StorageService from "./FridgeService";
 
 export default class ResipeService {
 
 
     static recipes = [
-        {id: 1, name: "Fry potato", values: []},
-        {id: 2, name: "borsch", values: []},
+        {id: 1, name: "Fry potato", instruction: "", values: []},
+        {id: 2, name: "borsch", instruction: "", values: []},
     ]
 
     static productsInRecipe = [
@@ -17,7 +17,7 @@ export default class ResipeService {
     ]
 
     static getProducts() {
-        return FridgeService.products;
+        return StorageService.products;
     }
 
     static getRecipes() {

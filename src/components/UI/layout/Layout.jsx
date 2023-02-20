@@ -27,7 +27,7 @@ export const Layout = () => {
             <MyButton onClick={logout} >Exit</MyButton>
             <NavLink to={"/"} className={setActive}>Home</NavLink>
             <NavLink to={"/posts"} style={setColor} >Posts</NavLink>
-            <NavLink to={"/fridge"}>Fridge</NavLink>
+            <NavLink to={"/storage"}>Storage</NavLink>
             <NavLink to={"/recipes"}>Recipes</NavLink>
             <NavLink to={"/about"} style={setColor} >About</NavLink>
         </header>

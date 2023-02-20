@@ -19,7 +19,7 @@ export const HomePage = () => {
     return (
         <div>
             <span>
-                <Link to={"/fridge"}>
+                <Link to={"/storage/fridge"}>
                     <img src={fridge} style={{width: '50%', height: '50%'}} 
                     onMouseEnter={() => setFridge(fridgeImgOpen)}
                     onMouseOut={() => setFridge(fridgeImg)}  
@@ -27,7 +27,7 @@ export const HomePage = () => {
                 </Link>
             </span>
             <span>
-                <Link to={"/fridge"}>
+                <Link to={"/storage/pantry"}>
                     <img src={pantryImg} style={{width: '25%', height: '25%'}} 
                     />
                 </Link>

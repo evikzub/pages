@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Select from 'react-select'
 import { useState } from 'react';
 
-const FridgeForm = ({visible, selectedProduct, productsToSelect, setSelectedProduct, saveProductInFridge, cancelEdit}) => {
+const StorageForm = ({visible, selectedProduct, productsToSelect, setSelectedProduct, saveProductInStorage, cancelEdit}) => {
 
     const [validated, setValidated] = useState(false);
 
@@ -20,7 +20,7 @@ const FridgeForm = ({visible, selectedProduct, productsToSelect, setSelectedProd
             return;
         }
 
-        saveProductInFridge();
+        saveProductInStorage();
         setValidated(false);
     }
 
@@ -32,7 +32,7 @@ const FridgeForm = ({visible, selectedProduct, productsToSelect, setSelectedProd
 
     return (
         <Form noValidate validated={validated}
-            onSubmit={submitData}
+            onSubmit={submitData} autoComplete="off"
             className='product' style={{display: (visible)?'' :'none'}}> 
             <Row>
                 <Form.Group as={Col} md="6">
@@ -71,4 +71,4 @@ const FridgeForm = ({visible, selectedProduct, productsToSelect, setSelectedProd
     )
 }
 
-export default FridgeForm;
+export default StorageForm;

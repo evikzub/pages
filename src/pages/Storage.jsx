@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import StorageService from "../API/FridgeService";
+import StorageService from "../API/StorageService";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MyButton from "../components/UI/button/MyButton";
 import { Form } from "react-bootstrap";
-import StorageForm from "../components/FridgeForm";
+import StorageForm from "../components/StorageForm";
 import { useParams } from "react-router-dom";
 
 
@@ -139,7 +139,8 @@ function Storage (){
         //enableView(prod);
         console.log("Cancel Edit")
         updateProductsInStorage(selectedProduct, selectedProduct.productId, false)
-        setVisible(selectedProduct.productId === 0)
+        //setVisible(selectedProduct.productId === 0)
+        setVisible(false)
     }
 
 

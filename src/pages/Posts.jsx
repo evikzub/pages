@@ -41,7 +41,7 @@ function Posts() {
     const totalCount = response.headers['x-total-count'] 
     const totalPages = getPageCount(totalCount, limit) 
     setTotalPages(totalPages)
-    console.log(totalCount)
+    //console.log(totalCount)
     console.log("Total Pages: ", totalPages, " => ", getPageCount(totalCount, limit))
   })
 

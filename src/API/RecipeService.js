@@ -1,4 +1,4 @@
-import StorageService from "./FridgeService";
+import StorageService from "./StorageService";
 
 export default class ResipeService {
 

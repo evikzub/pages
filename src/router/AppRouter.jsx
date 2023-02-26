@@ -1,18 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-	Routes,
 	Route,
 	Navigate,
+	createBrowserRouter,
+	createRoutesFromElements,
+	RouterProvider,
 } from 'react-router-dom';
+import { AuthProvider } from 'context';
 
-import { Notfound } from '../pages/Notfound';
-import ErrorPage from '../pages/Error-page';
-import { HomePage } from '../pages/HomePage';
-import { Layout } from '../components/UI/layout/Layout';
 
-import { Login } from '../pages/Login';
-//import { useContext } from "react";
-//import { AuthContext } from "../context";
+import { PostIdPage, postLoader } from 'pages/PostDetails/PostIdPage';
+import { Login } from 'pages/Login';
+import { Notfound } from 'pages/Notfound';
+import ErrorPage from 'pages/Error-page';
+import { HomePage } from 'pages/HomePage';
+
+import { Layout } from 'components/UI/layout/Layout';
+
 import RequireAuth from '../hoc/RequireAuth';
 
 import { privateRoutes, publicRoutes } from './routes';
@@ -23,50 +27,42 @@ const AppRouter = () => {
 	//const {user} = useContext(AuthContext)
 	//console.log("AppRouter => user: ", user);
 
-	return (
+	const router = createBrowserRouter(createRoutesFromElements(
 		<>
-			{/* {(user)
-            ? */}
-			<Routes>
-				<Route path='/login'  element={<Login/>}/>
-				<Route path='/' element={<Layout/>} errorElement={<ErrorPage/>}>
-					<Route index element={<HomePage/>}/>
-					{privateRoutes.map(route => 
-						<Route path={route.path} 
-							element={
-								<RequireAuth>
-									{route.component}
-								</RequireAuth>
-							} 
-							key={route.path} />
-					)}
-					{/* 
-                    <Route path="about"  element={<About/>}/>
-                    <Route path="posts"  element={<Posts/>}/>
-                    <Route path="posts/:id"  element={<PostIdPage/>}/>
-                    <Route path="fridge" element={<Fridge/>}/>
-                    <Route path="recipes" element={
-                        <RequireAuth>
-                            <Recipes/>
-                        </RequireAuth>}/> 
-                    */}
-					{publicRoutes.map(route => 
-						<Route path={route.path} element={route.component} key={route.path} />
-					)}
-					<Route path='about-us' element={<Navigate to='/about' replace />}/>
-					<Route path='*' element={<Notfound/>} errorElement={<ErrorPage/>}/>
-				</Route>
-			</Routes>
-			{/* :
-            <Routes>
-                {publicRoutes.map(route => 
-                    <Route path={route.path} element={route.component} key={route.path} />
-                )}
-                <Route path="*" element={<Login/>} errorElement={<ErrorPage/>}/>
-            </Routes>
-            } */}
-		</>
+			<Route path='/login'  element={<Login/>}/>
+			<Route path='/' element={<Layout/>} errorElement={<ErrorPage/>}>
+				<Route index element={<HomePage/>}/>
+				{privateRoutes.map(route => 
+					<Route path={route.path} 
+						element={
+							<RequireAuth>
+								{route.component}
+							</RequireAuth>
+						}
+						//loader={route.loader}
+						key={route.path} />
+				)}
+				<Route path='posts/:id' 
+					element={
+						<RequireAuth>
+							<PostIdPage/>
+						</RequireAuth>
+					}
+					loader={postLoader}
+				/>
+				{publicRoutes.map(route => 
+					<Route path={route.path} element={route.component} key={route.path} />
+				)}
+				<Route path='about-us' element={<Navigate to='/about' replace />}/>
+				<Route path='*' element={<Notfound/>} errorElement={<ErrorPage/>}/>
+			</Route>
+		</>    
+	));
 
+	return (
+		<AuthProvider>
+			<RouterProvider router={router}/>
+		</AuthProvider>
 	);
 
 };

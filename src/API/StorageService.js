@@ -1,3 +1,5 @@
+//import productData from './products.json';
+
 export default class StorageService {
 	measure = [];
 
@@ -31,21 +33,22 @@ export default class StorageService {
 	];
 
 	static productsInFridge = [
-		{ storageId: 1, productId: 1, name: 'Butter', quantity: 1 },
-		{ storageId: 1, productId: 2, name: 'Milk', quantity: 2 },
-		{ storageId: 1, productId: 7, name: 'Sweet peper', quantity: 3 },
-		{ storageId: 1, productId: 6, name: 'Cucumber', quantity: 4 },
-		{ storageId: 1, productId: 21, name: 'Egg', quantity: 5 },
+		{ id: 1, storageId: 1, productId: 1, name: 'Butter', quantity: 1 },
+		{ id: 2, storageId: 1, productId: 2, name: 'Milk', quantity: 2 },
+		{ id: 3, storageId: 1, productId: 7, name: 'Sweet peper', quantity: 3 },
+		{ id: 4, storageId: 1, productId: 6, name: 'Cucumber', quantity: 4 },
+		{ id: 5, storageId: 1, productId: 21, name: 'Egg', quantity: 5 },
 	];
 
 	static productsInPantry = [
-		{ storageId: 2, productId: 4, name: 'Sugar', quantity: 1 },
-		{ storageId: 2, productId: 3, name: 'Potato', quantity: 2 },
-		{ storageId: 2, productId: 8, name: 'Pitted olive', quantity: 3 },
+		{ id: 6, storageId: 2, productId: 4, name: 'Sugar', quantity: 1 },
+		{ id: 7, storageId: 2, productId: 3, name: 'Potato', quantity: 2 },
+		{ id: 8, storageId: 2, productId: 8, name: 'Pitted olive', quantity: 3 },
 	];
 
 	static getProducts() {
 		return StorageService.products;
+		//return productData;
 	}
 
 	static getStorages() {
@@ -53,7 +56,7 @@ export default class StorageService {
 	}
 
 	static getProductsByStorageId(storgeId) {
-		console.log('StorageProducts: ', storgeId);
+		//console.log('StorageProducts: ', storgeId);
 		if (storgeId === 1) {
 			return StorageService.productsInFridge;
 		}

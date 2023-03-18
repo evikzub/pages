@@ -19,8 +19,6 @@ export const fetchProductsInStorage = createAsyncThunk(
 	}
 );
 
-//const emptyProductInStorage = {id: 0, storageId: 0, productId: 0, name: '', quantity: 0};
-
 const getProductsForUse = (products, producstInStorage) => {
 	const productsForUse =[];
 	//Taking all products we have
@@ -48,10 +46,8 @@ const productsSlice = createSlice({
 		allProducts: [],
 		inStorage: [],
 		forUse: [],
-		//selectedProduct: emptyProductInStorage,
-		//newProduct: emptyProductInStorage,
-		status: null,
-		error: null,
+		//status: null,
+		//error: null,
 	},
 	reducers: {
 		initProducts (state, action){
@@ -67,42 +63,12 @@ const productsSlice = createSlice({
 			state.forUse = getProductsForUse(state.allProducts, state.inStorage);
 		},
 
-		// selectProductInStorage(state, action){
-		// 	if (action.payload === null){
-		// 		state.selectedProduct = emptyProductInStorage;
-		// 	}
-		// 	else{
-		// 		state.selectedProduct = action.payload.product;
-		// 	}
-		// },
-
-		// setNewProductForStorage(state, action){
-		// 	if (action.payload === null){
-		// 		state.newProduct = emptyProductInStorage;
-		// 	}
-		// 	else{
-		// 		state.newProduct = action.payload.product;
-		// 	}
-		// },
-
 		addProductToStorage(state, action){
 			//console.log('Add product ->>', action.payload);
-			if (action.payload === null){
-				//state.newProduct = emptyProductInStorage;
-			}
-			else{
+			if (action.payload !== null){
 				state.inStorage.push(action.payload.product);
 				state.forUse = getProductsForUse(state.allProducts, state.inStorage);
-				//state.newProduct = emptyProductInStorage;
 			}
-
-			//const product = {...newProduct, storageId: selectedStorage.id};
-			//setNewProduct(product);
-			//console.log('Insert Product: ', product);
-			
-			//state.inStorage.push(action.payload.product);
-			//setPoductsInStorage([...productsInStorage, product]);
-			//setNewProduct(emptyProductInStorage);
 		},
 
 		updateProductInStorage(state, action){
@@ -116,7 +82,6 @@ const productsSlice = createSlice({
 			//console.log('Products after save: ', newSetOfProducts);
 			state.inStorage = newSetOfProducts;
 			state.forUse = getProductsForUse(state.allProducts, newSetOfProducts);
-			//state.selectedProduct = emptyProductInStorage;
 		},
 		
 		removeProductFromStorage(state, action){
@@ -152,7 +117,6 @@ export const {
 	addProductToStorage, 
 	updateProductInStorage, 
 	removeProductFromStorage, 
-	//selectProductInStorage,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

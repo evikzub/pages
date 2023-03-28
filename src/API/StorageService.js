@@ -1,4 +1,5 @@
 //import productData from './products.json';
+//import { getProducts, getProductsByStorageId, getStorages } from 'shared/api/storage';
 
 export default class StorageService {
 	measure = [];
@@ -46,20 +47,29 @@ export default class StorageService {
 		{ id: 8, storageId: 2, productId: 8, name: 'Pitted olive', quantity: 3 },
 	];
 
-	static getProducts() {
-		return StorageService.products;
-		//return productData;
-	}
+	// static async getProducts() {
+	// 	//return StorageService.products;
+	// 	//return productData;
+	// 	//return getProducts();
+	// }
 
-	static getStorages() {
-		return StorageService.storages;
-	}
+	// static getStorages() {
+	// 	return StorageService.storages;
+	// 	//const storages = await getStorages();
+	// 	// console.log(storages.data);
+	// 	//return storages.data;
+	// }
 
-	static getProductsByStorageId(storgeId) {
-		//console.log('StorageProducts: ', storgeId);
-		if (storgeId === 1) {
-			return StorageService.productsInFridge;
-		}
-		return StorageService.productsInPantry;
-	}
+	// static async getProductsByStorageId(storageId) {
+	// 	console.log('StorageProducts: ', storageId);
+	// 	// if (storageId === 1) {
+	// 	// 	return StorageService.productsInFridge;
+	// 	// }
+	// 	// return StorageService.productsInPantry;
+	// 	const response = await getProductsByStorageId(storageId);
+	// 	// return response.then((products) => {
+	// 	// 	return products.data;
+	// 	// });
+	// 	return await response.data;
+	// }
 }

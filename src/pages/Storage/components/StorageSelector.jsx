@@ -1,7 +1,8 @@
-import StorageService from 'API/StorageService';
+//import StorageService from 'API/StorageService';
 import { useEffect, useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { getStorages } from 'shared/api/storage';
 
 
 const StorageSelector = ({selectStorage}) => {
@@ -12,7 +13,9 @@ const StorageSelector = ({selectStorage}) => {
 	//Init data
 	useEffect (() => {
 		//get list of Storages
-		setStorages(StorageService.getStorages);
+		//setStorages(StorageService.getStorages);
+		const results = getStorages();
+		results.then((storages) => setStorages(storages));
 	}, []);
 
 	//Storages loaded
@@ -24,7 +27,7 @@ const StorageSelector = ({selectStorage}) => {
 			//console.log("Storage: ", storage[0])
 			selectStorage(storage[0]);
 		}
-	}, [params.type, storages, selectStorage]);
+	}, [params.type, storages]);
 
 	return (
 		<ListGroup horizontal>

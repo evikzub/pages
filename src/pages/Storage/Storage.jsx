@@ -22,7 +22,7 @@ function Storage (){
 
 	//Storage selected
 	useEffect (() => {
-		//console.log('Storage selection');
+		//console.log('Storage selection', selectedStorage);
 		if (selectedStorage === undefined || selectedStorage.id === 0){
 			dispatch(fetchProductsInStorage(0));	
 			return;

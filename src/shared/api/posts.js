@@ -1,12 +1,12 @@
 //import axios from 'axios';
 
-import { apiInstance } from './base';
+import { apiTestInstance } from './base';
 
 const BASE_URL = '/posts';
 
 export function getAllPosts(limit = 10, page = 1) {
 	try {
-		const response = apiInstance.get(`${BASE_URL}`, {
+		const response = apiTestInstance.get(`${BASE_URL}`, {
 			params: {
 				_limit: limit,
 				_page: page,
@@ -31,7 +31,7 @@ export function getAllPosts(limit = 10, page = 1) {
 
 export function getPostById(postId) {
 	try {
-		const response = apiInstance.get(`${BASE_URL}/${postId}`);
+		const response = apiTestInstance.get(`${BASE_URL}/${postId}`);
 		return response;
 	} catch (e) {
 		console.log('Error -> ', e);
@@ -40,7 +40,7 @@ export function getPostById(postId) {
 
 export function getCommentsByPostId(postId) {
 	try {
-		const response = apiInstance.get(`${BASE_URL}/${postId}/comments`);
+		const response = apiTestInstance.get(`${BASE_URL}/${postId}/comments`);
 		return response;
 	} catch (e) {
 		console.log('Error -> ', e);

@@ -7,3 +7,5 @@ const getEnvVar = (key) => {
 };
 
 export const API_URL = getEnvVar('REACT_APP_API_URL');
+
+export const API_SERVER = getEnvVar('REACT_APP_API_SERVER');

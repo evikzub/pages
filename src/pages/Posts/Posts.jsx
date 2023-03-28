@@ -38,7 +38,7 @@ function Posts() {
 	const lastElement = useRef();
 
 	const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page) => {
-		console.log('useFetching, page: ', page);
+		//console.log('useFetching, page: ', page);
 		//const response = await PostService.getAll(limit, page);
 		const response = await getAllPosts(limit, page);
 		//setPosts(response.data)
@@ -48,7 +48,7 @@ function Posts() {
 		const totalPages = getPageCount(totalCount, limit); 
 		setTotalPages(totalPages);
 		//console.log(totalCount)
-		console.log('Total Pages: ', totalPages, ' => ', getPageCount(totalCount, limit));
+		//console.log('Total Pages: ', totalPages, ' => ', getPageCount(totalCount, limit));
 	});
 
 	const createPost = (newPost) => {
@@ -65,7 +65,7 @@ function Posts() {
 	});
 
 	useEffect(() => {
-		console.log('useEffect -> fetchPosts; page: ', page);
+		//console.log('useEffect -> fetchPosts; page: ', page);
 		fetchPosts(limit, page);
 	}, [page, limit]);
 

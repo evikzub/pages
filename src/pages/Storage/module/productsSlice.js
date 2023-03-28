@@ -1,12 +1,14 @@
-import StorageService from 'API/StorageService';
+//import StorageService from 'API/StorageService';
+import { getProducts, getProductsInStorage } from 'shared/api/storage';
 
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit');
 
 export const fetchProducts = createAsyncThunk(
 	'products/fetchProducts',
 	async function (_, {dispatch}) {
-		const values = StorageService.getProducts();
-		dispatch(initProducts(values));
+		//const values = await StorageService.getProducts();
+		const values = await getProducts();
+		dispatch(initProducts(values.data));
 	}
 );
 
@@ -14,7 +16,11 @@ export const fetchProductsInStorage = createAsyncThunk(
 	'products/fetchProductsInStorage',
 	async function (id, {dispatch}) {
 		let values = [];
-		if (id !==0 ) values = StorageService.getProductsByStorageId(id);
+		//if (id !==0 ) values = await StorageService.getProductsByStorageId(id);
+		if (id !==0 ) {
+			const results = await getProductsInStorage(id);
+			values = results.data;
+		}
 		dispatch(initProductsInStorage(values));
 	}
 );
